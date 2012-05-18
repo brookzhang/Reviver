@@ -14,6 +14,17 @@ rails g cancan:ability
 rails g controller Pages index about contact help
 # modify routes add root :to=> 'pages#index'
 rake db:migrate
+rails g migration OrganizationUnitBaseStructure  #14:25 2012/5/18
+
+
+
+
+
+
+
+
+
+
 
 
 

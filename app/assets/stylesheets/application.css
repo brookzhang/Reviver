@@ -10,6 +10,7 @@
  *
  *require_self
  *require_tree .
- *require imports.css.scss
- *= require rails_admin/imports.css.scss
+ *= require rails_admin
+ *custom blue style bootstrap on http://stylebootstrap.info/index.php?style=V8NQGPhiGguQUJnN5Daqy
+ *= require bootstrap 
 */

@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120517015444) do
+ActiveRecord::Schema.define(:version => 20120518062116) do
+
+  create_table "functions", :force => true do |t|
+    t.integer  "parent_id",   :default => 0,  :null => false
+    t.string   "code",        :default => "", :null => false
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  add_index "functions", ["code"], :name => "index_functions_on_code", :unique => true
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
@@ -25,6 +36,60 @@ ActiveRecord::Schema.define(:version => 20120517015444) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
+  create_table "role_functions", :force => true do |t|
+    t.string   "role_code",     :default => "", :null => false
+    t.string   "function_code", :default => "", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "code",        :default => "", :null => false
+    t.string   "name"
+    t.string   "description"
+    t.string   "current_url"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  add_index "roles", ["code"], :name => "index_roles_on_code", :unique => true
+
+  create_table "unit_roles", :force => true do |t|
+    t.string   "unit_code",  :default => "", :null => false
+    t.string   "role_code",  :default => "", :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  create_table "unit_routings", :force => true do |t|
+    t.string   "from_unit_code", :default => "", :null => false
+    t.string   "to_unit_code",   :default => "", :null => false
+    t.string   "routing_type",   :default => "", :null => false
+    t.integer  "status"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  create_table "units", :force => true do |t|
+    t.string   "code",       :default => "", :null => false
+    t.string   "name"
+    t.string   "shortname"
+    t.string   "region"
+    t.integer  "status"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "units", ["code"], :name => "index_units_on_code", :unique => true
+
+  create_table "user_roles", :force => true do |t|
+    t.integer  "user_id",      :default => 0, :null => false
+    t.integer  "unit_role_id", :default => 0, :null => false
+    t.integer  "status"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
