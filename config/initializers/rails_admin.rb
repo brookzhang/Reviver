@@ -78,5 +78,33 @@ RailsAdmin.config do |config|
   # Your model's configuration, to help you get started:
 
   # All fields marked as 'hidden' won't be shown anywhere in the rails_admin unless you mark them as visible. (visible(true))
+  
+  config.model Unit do
+    navigation_label 'Organization'
+  end
+  
+  config.model Unit_routing do
+    parent Unit
+  end
+
+  config.model Unit_role do
+    parent Unit
+  end
+
+  config.model Role do
+    parent Unit
+  end
+
+  config.model Function do
+    parent Unit
+  end
+
+  config.model Role_function do
+    parent Unit
+  end
+
+  config.model User_role do
+    parent Unit
+  end
 
 end
