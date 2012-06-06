@@ -1,6 +1,7 @@
 set HTTP_PROXY=http://172.30.4.63:3128
 set HTTP_PROXY=http://172.20.1.46:8999
 export http_proxy=http://172.20.1.46:8999
+$ git config --global http.proxy http://172.20.1.46:8999
 
 rails new Reviver
 cd Reviver
@@ -19,7 +20,7 @@ rails g migration OrganizationUnitBaseStructure  #14:25 2012/5/18
 
 
 
-
+remote head refers to nonexistent ref ,unable to checkout
 
 
 
