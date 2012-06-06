@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120518062116) do
+ActiveRecord::Schema.define(:version => 20120606042732) do
 
   create_table "functions", :force => true do |t|
     t.integer  "parent_id",   :default => 0,  :null => false
@@ -23,6 +23,48 @@ ActiveRecord::Schema.define(:version => 20120518062116) do
   end
 
   add_index "functions", ["code"], :name => "index_functions_on_code", :unique => true
+
+  create_table "model_parts", :force => true do |t|
+    t.integer  "model_id",   :null => false
+    t.integer  "part_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "models", :force => true do |t|
+    t.integer  "product_id",  :default => 0,  :null => false
+    t.integer  "series_id",   :default => 0,  :null => false
+    t.string   "model",       :default => "", :null => false
+    t.string   "name"
+    t.string   "description"
+    t.integer  "status"
+    t.integer  "preid"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  add_index "models", ["model"], :name => "index_models_on_model", :unique => true
+
+  create_table "parts", :force => true do |t|
+    t.string   "partnumber",     :default => "", :null => false
+    t.string   "mapping_number"
+    t.string   "name"
+    t.integer  "status"
+    t.integer  "preid"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "parts", ["partnumber"], :name => "index_parts_on_partnumber", :unique => true
+
+  create_table "products", :force => true do |t|
+    t.string   "code",        :default => "", :null => false
+    t.string   "name"
+    t.string   "description"
+    t.integer  "status"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
@@ -54,6 +96,15 @@ ActiveRecord::Schema.define(:version => 20120518062116) do
   end
 
   add_index "roles", ["code"], :name => "index_roles_on_code", :unique => true
+
+  create_table "series", :force => true do |t|
+    t.integer  "product_id",  :default => 0, :null => false
+    t.string   "name"
+    t.string   "description"
+    t.integer  "status"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
 
   create_table "unit_roles", :force => true do |t|
     t.string   "unit_code",  :default => "", :null => false

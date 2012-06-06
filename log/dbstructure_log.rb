@@ -53,16 +53,54 @@ user_id
 unit_role_id
 status
 
-#########################  parts models products .... common settings #########################
+#########################  parts models products #########################
+#[products]
+id
+code
+name
+description
+status
+
+
+#[series]
+id
+product_id
+name
+description
+
+
+
+#[models]
+id
+product_id
+series_id
+model
+name
+description
+status
+preid         integer   #history data id
+
+
 #[parts]
 id
 partnumber    nvarchar(50)
-partname      nvarchar(50)
-type          integer
+mapping_number  
+name      nvarchar(50)
 status        integer
+preid         integer   #history data id
+
+
+#[model_parts] many to many
+id
+model_id
+part_id
 
 
 
+
+
+
+#########################  common settings #########################
 #[lookups]
 id
 status                integer

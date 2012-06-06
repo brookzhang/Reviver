@@ -83,11 +83,11 @@ RailsAdmin.config do |config|
     navigation_label 'Organization'
   end
   
-  config.model Unit_routing do
+  config.model UnitRouting do
     parent Unit
   end
 
-  config.model Unit_role do
+  config.model UnitRole do
     parent Unit
   end
 
@@ -99,11 +99,11 @@ RailsAdmin.config do |config|
     parent Unit
   end
 
-  config.model Role_function do
+  config.model RoleFunction do
     parent Unit
   end
 
-  config.model User_role do
+  config.model UserRole do
     parent Unit
   end
 
