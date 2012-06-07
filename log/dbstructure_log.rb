@@ -109,22 +109,50 @@ category              varchar(50)
 description           nvarchar(500)
 
 
+#[addresses]
+id
+
+
+
 
 #########################  orders #########################
-#[orders]
+#[part_orders]
 id
-order_number
-order_title
-item_count
-amount
+number
+reference_number
+from_unit_id
+to_unit_id
+ship_address_id
+bill_address_id
+type    #TW from waiting for parts  T inwarranty  P outwarranty  VT to vendor in warranty  VP to vendor out warranty
+requested_date
+confirmed_date
+shiped_date
+received_date
+
 status
 
-#[order_items]
+
+#[part_order_items]
 id
-order_id
+part_order_id
+model_id
+part_id
+confirmed_part_id
 
+requested_qty
+confirmed_qty
+shipped_qty
+received_qty
 
+requested_date
+confirmed_date
+shiped_date
+received_date
 
+from_part_order_item_id   # masp sum asp orders to be a new order to PLC
+is_in_vendor_warranty     # order is in warranty ,but parts maybe outof vendor warranty
+from_rma_detail_id        # 
 
 
 #########################  call center #########################
@@ -134,7 +162,10 @@ order_id
 
 
 #########################  rma #########################
+#[rma_headers] return metierial authentication
 
+
+#[rma_details] rma details info
 
 
 #########################  return #########################
