@@ -19,8 +19,9 @@ rails g controller Pages index about contact help
 # modify routes add root :to=> 'pages#index'
 rake db:migrate
 rails g migration OrganizationUnitBaseStructure  #14:25 2012/5/18
-
-
+rake db:rollback
+rails g controller Order/part_order index add create edit save destroy
+rails g controller Order/part_order_item index add create edit save destroy
 
 
 

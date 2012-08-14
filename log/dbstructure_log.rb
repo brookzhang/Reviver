@@ -1,7 +1,7 @@
 
 status  1-active  0-inactive  2-locked(can not change anything)
 
-#########################  organization unit structure  #########################
+#########################  organization unit structure  (ok)#########################
 #[units] 单位,例如ASP,PLC,Callcenter,masp 等等,独立的事业单位,不分开业务和仓库,也不分类型,只用user role建立业务类型
 id
 code
@@ -53,7 +53,7 @@ user_id
 unit_role_id
 status
 
-#########################  parts models products #########################
+#########################  parts models products (ok)#########################
 #[products]
 id
 code
@@ -122,6 +122,7 @@ number
 reference_number
 from_unit_id
 to_unit_id
+status
 ship_address_id
 bill_address_id
 type    #TW from waiting for parts  T inwarranty  P outwarranty  VT to vendor in warranty  VP to vendor out warranty
@@ -130,7 +131,7 @@ confirmed_date
 shiped_date
 received_date
 
-status
+
 
 
 #[part_order_items]
@@ -139,6 +140,7 @@ part_order_id
 model_id
 part_id
 confirmed_part_id
+status
 
 requested_qty
 confirmed_qty
@@ -149,6 +151,11 @@ requested_date
 confirmed_date
 shiped_date
 received_date
+
+requester_id
+confirmer_id
+shipper_id
+receiver_id
 
 from_part_order_item_id   # masp sum asp orders to be a new order to PLC
 is_in_vendor_warranty     # order is in warranty ,but parts maybe outof vendor warranty

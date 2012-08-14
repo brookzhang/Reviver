@@ -2,6 +2,30 @@ Reviver::Application.routes.draw do
 
   
 
+  get "part_order_item/index"
+
+  get "part_order_item/add"
+
+  get "part_order_item/create"
+
+  get "part_order_item/edit"
+
+  get "part_order_item/save"
+
+  get "part_order_item/destroy"
+
+  get "part_order/index"
+
+  get "part_order/add"
+
+  get "part_order/create"
+
+  get "part_order/edit"
+
+  get "part_order/save"
+
+  get "part_order/destroy"
+
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users

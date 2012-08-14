@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120606042732) do
+ActiveRecord::Schema.define(:version => 20120630084323) do
 
   create_table "functions", :force => true do |t|
     t.integer  "parent_id",   :default => 0,  :null => false
@@ -44,6 +44,48 @@ ActiveRecord::Schema.define(:version => 20120606042732) do
   end
 
   add_index "models", ["model"], :name => "index_models_on_model", :unique => true
+
+  create_table "part_order_items", :force => true do |t|
+    t.integer  "part_order_id",           :null => false
+    t.integer  "model_id",                :null => false
+    t.integer  "part_id",                 :null => false
+    t.integer  "confirmed_part_id"
+    t.integer  "status"
+    t.integer  "requested_qty"
+    t.integer  "confirmed_qty"
+    t.integer  "shipped_qty"
+    t.integer  "received_qty"
+    t.datetime "requested_date"
+    t.datetime "confirmed_date"
+    t.datetime "shiped_date"
+    t.datetime "received_date"
+    t.integer  "requester_id"
+    t.integer  "confirmer_id"
+    t.integer  "shipper_id"
+    t.integer  "receiver_id"
+    t.integer  "from_part_order_item_id"
+    t.boolean  "is_in_vendor_warranty"
+    t.integer  "from_rma_detail_id"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  create_table "part_orders", :force => true do |t|
+    t.string   "number",           :null => false
+    t.string   "reference_number"
+    t.integer  "from_unit_id",     :null => false
+    t.integer  "to_unit_id",       :null => false
+    t.integer  "status"
+    t.integer  "ship_address_id"
+    t.integer  "bill_address_id"
+    t.integer  "type"
+    t.datetime "requested_date"
+    t.datetime "confirmed_date"
+    t.datetime "shiped_date"
+    t.datetime "received_date"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "parts", :force => true do |t|
     t.string   "partnumber",     :default => "", :null => false
